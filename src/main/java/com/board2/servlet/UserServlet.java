@@ -1,11 +1,14 @@
 package com.board2.servlet;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.board2.dto.UserDTO;
 
 
 @WebServlet(urlPatterns = "/user/*")
@@ -22,8 +25,7 @@ public class UserServlet extends HttpServlet {
 		if("join".equals(cmd)) {
 			
 		}else if("login".equals(cmd)) {
-			String uiId = request.getParameter("uiId");
-			String uiPwd = request.getParameter("uiPwd");
+			UserDTO user = new UserDTO();
 		}else if("update".equals(cmd)) {
 			
 		}else if("delete".equals(cmd)) {
