@@ -36,15 +36,19 @@
 		from user_info
 		WHERE UI_ID = #{uiId}
 	</select>
-	<select id="selectUserByIdAndPwd" resultType="com.board2.dto.UserDTO">
+	<select id="selectUserByIdAndPwd"
+		resultType="com.board2.dto.UserDTO">
 		select UI_NUM, UI_NAME,
-		UI_ID, UI_PWD, UI_GRADE, CREDAT, CRETIM, LMODAT, LMOTIM
+		UI_ID, UI_PWD, UI_GRADE, CREDAT,
+		CRETIM, LMODAT, LMOTIM
 		from user_info
 		WHERE UI_ID = #{uiId}
-		AND UI_PWD = #{uiPwd}
+		AND UI_PWD =
+		#{uiPwd}
 	</select>
 	<select id="selectCntById" resultType="int">
-		select COUNT(UI_ID) FROM USER_INFO WHERE UI_ID=#{uiId}
+		select COUNT(UI_ID) FROM
+		USER_INFO WHERE UI_ID=#{uiId}
 	</select>
 	<insert id="insertUser">
 		insert into user_info(ui_name, ui_id, ui_pwd,
@@ -56,7 +60,9 @@
 		set UI_NAME = #{uiName},
 		UI_ID =
 		#{uiId},
-		UI_PWD = #{uiPwd},
+		<if test='uiPwd != null and uiPwd !=""'>
+			UI_PWD = #{uiPwd},
+		</if>
 		UI_GRADE=#{uiGrade}
 		where UI_NUM = #{uiNum}
 	</update>

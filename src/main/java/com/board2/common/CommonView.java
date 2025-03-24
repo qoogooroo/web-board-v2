@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 public class CommonView {
 
@@ -28,5 +29,11 @@ public class CommonView {
 		req.setAttribute("msg", msg);
 		req.setAttribute("url", url);
 		forwardMsg(req, res);
+	}
+	
+	public static void forwardView(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		String uri = req.getRequestURI();
+		RequestDispatcher rd = req.getRequestDispatcher("/views" + uri);
+		rd.forward(req, res);
 	}
 }
