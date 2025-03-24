@@ -21,6 +21,7 @@ import javax.servlet.http.HttpSession;
  */
 @WebFilter(urlPatterns={"/user/*","/board/*"})
 public class AuthFilter extends HttpFilter implements Filter {
+	private static final boolean IS_TEST = true;
 	private static final long serialVersionUID = 1L;
 	private static List<String> ignores = new ArrayList<>();
 	static {
